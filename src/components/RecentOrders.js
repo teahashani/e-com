@@ -86,8 +86,7 @@ const RecentOrders = () => {
           <thead>
             <tr className="text-left text-gray-500 dark:text-gray-400">
               <th className="pb-3">Order ID</th>
-              <th className="pb-3">Product</th>
-              <th className="pb-3">Customer</th>
+              <th className="pb-3 pl-6">Product</th>
               <th className="pb-3">Date</th>
               <th className="pb-3">Status</th>
               <th className="pb-3">Amount</th>
@@ -97,8 +96,7 @@ const RecentOrders = () => {
             {orders.map((order) => (
               <tr key={order.id} className="border-t border-gray-200 dark:border-gray-700">
                 <td className="py-3 text-gray-700 dark:text-gray-300">{order.id}</td>
-                <td className="py-3 text-gray-700 dark:text-gray-300">{order.product}</td>
-                <td className="py-3 text-gray-700 dark:text-gray-300">{order.customer}</td>
+                <td className="py-3 pl-6 text-gray-700 dark:text-gray-300">{order.product}</td>
                 <td className="py-3 text-gray-500 dark:text-gray-400">{order.date}</td>
                 <td className="py-3">
                   <span className={`px-2 py-1 rounded-full text-xs ${
