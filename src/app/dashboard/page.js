@@ -10,7 +10,7 @@ import {
 } from 'react-icons/fi';
 
 export default function DashboardPage() {
-  // Mock data - in a real app, this would come from an API
+  // Mock data 
   const customerCount = 1250;
   const orderCount = 342;
   const monthlyTarget = 85;
@@ -18,7 +18,6 @@ export default function DashboardPage() {
   return (
     <div className="h-full p-6">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Dashboard</h1>
         
         {/* Top Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -72,7 +71,7 @@ export default function DashboardPage() {
               </div>
             </div>
             <div className="mt-4">
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">Target you've set for each month</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">Target you&apos;ve set for each month</p>
               <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
                 <div 
                   className="bg-purple-500 h-2.5 rounded-full" 

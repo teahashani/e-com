@@ -1,21 +1,42 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FiFilter, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 const RecentOrders = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState('All');
+  const [orders, setOrders] = useState([]);
 
-  // Sample data 
-  const orders = [
-    { id: '#1234', product: 'Premium Headphones', customer: 'John Smith', date: 'Apr 15, 2024', status: 'Delivered', amount: '$299' },
-    { id: '#1235', product: 'Wireless Mouse', customer: 'Sarah Johnson', date: 'Apr 14, 2024', status: 'Processing', amount: '$49' },
-    { id: '#1236', product: 'Mechanical Keyboard', customer: 'Mike Brown', date: 'Apr 14, 2024', status: 'Shipped', amount: '$129' },
-    { id: '#1237', product: 'Gaming Monitor', customer: 'Emily Davis', date: 'Apr 13, 2024', status: 'Delivered', amount: '$499' },
-    { id: '#1238', product: 'USB-C Hub', customer: 'David Wilson', date: 'Apr 13, 2024', status: 'Processing', amount: '$79' },
-    { id: '#1239', product: 'USB-C Hub', customer: 'David Wilson', date: 'Apr 12, 2024', status: 'Processing', amount: '$79' }
-  ];
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch('https://fakestoreapi.com/products');
+        if (!response.ok) {
+          throw new Error('Failed to fetch orders');
+        }
+        const data = await response.json();
+        // Transform the product data into order format
+        const transformedOrders = data.slice(0, 5).map((product, index) => ({
+          id: `#${1000 + index}`,
+          product: product.title,
+          customer: 'Customer ' + (index + 1),
+          date: new Date().toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric', 
+            year: 'numeric' 
+          }),
+          status: ['Processing', 'Shipped', 'Delivered'][Math.floor(Math.random() * 3)],
+          amount: `$${product.price}`
+        }));
+        setOrders(transformedOrders);
+      } catch (err) {
+        console.error('Error fetching orders:', err);
+      }
+    };
+
+    fetchOrders();
+  }, []);
 
   const filters = ['All', 'Processing', 'Shipped', 'Delivered'];
 
