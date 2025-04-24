@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FiHome, FiShoppingBag, FiShoppingCart, FiUsers, FiTarget, FiTrendingUp, FiTrendingDown } from 'react-icons/fi';
+import { FiHome, FiShoppingBag, FiShoppingCart, FiUsers, FiTarget, FiTrendingUp, FiTrendingDown, FiUser } from 'react-icons/fi';
 
 const Navbar = () => {
   const menuItems = [
@@ -11,6 +11,7 @@ const Navbar = () => {
     { label: 'Customers', href: '/customers', icon: FiUsers },
     { label: 'Target', href: '/target', icon: FiTarget },
     { label: 'Trending', href: '/trending', icon: FiTrendingUp },
+    { label: 'My Account', href: '/account', icon: FiUser },
   ];
 
   return (
