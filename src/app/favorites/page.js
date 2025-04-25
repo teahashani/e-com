@@ -1,55 +1,29 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { FiShoppingCart, FiHeart } from 'react-icons/fi';
 import { useFavorites } from '@/context/FavoritesContext';
+import { FiHeart, FiShoppingCart } from 'react-icons/fi';
 
-export default function ProductsPage() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const { toggleFavorite, isFavorite } = useFavorites();
+export default function FavoritesPage() {
+  const { favorites, toggleFavorite } = useFavorites();
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('https://fakestoreapi.com/products');
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
-        const data = await response.json();
-        setProducts(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  if (loading) {
+  if (favorites.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-red-500">Error: {error}</div>
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">My Favorites</h1>
+        <div className="text-center py-12">
+          <FiHeart className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-gray-600 dark:text-gray-300 mb-2">No favorites yet</h2>
+          <p className="text-gray-500 dark:text-gray-400">Add some products to your favorites to see them here.</p>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Our Products</h1>
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">My Favorites</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {products.map((product) => (
+        {favorites.map((product) => (
           <div key={product.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
             <div className="relative h-48">
               <img
@@ -66,7 +40,7 @@ export default function ProductsPage() {
                 <div className="flex space-x-2">
                   <button 
                     onClick={() => toggleFavorite(product)}
-                    className={`p-2 ${isFavorite(product.id) ? 'text-red-500' : 'text-gray-600 dark:text-gray-300'} hover:text-red-500`}
+                    className="p-2 text-red-500 hover:text-red-600"
                   >
                     <FiHeart className="w-5 h-5" />
                   </button>
