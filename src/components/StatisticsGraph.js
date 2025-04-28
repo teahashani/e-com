@@ -47,4 +47,4 @@ const StatisticsGraph = () => {
   );
 };
 
-export default StatisticsGraph; 
+export default StatisticsGraph;

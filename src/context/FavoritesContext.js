@@ -11,13 +11,22 @@ export function FavoritesProvider({ children }) {
     // Load favorites from localStorage on initial load
     const savedFavorites = localStorage.getItem('favorites');
     if (savedFavorites) {
-      setFavorites(JSON.parse(savedFavorites));
+      try {
+        setFavorites(JSON.parse(savedFavorites));
+      } catch (error) {
+        console.error('Error parsing favorites from localStorage:', error);
+        setFavorites([]);
+      }
     }
   }, []);
 
   useEffect(() => {
     // Save favorites to localStorage whenever they change
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    try {
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    } catch (error) {
+      console.error('Error saving favorites to localStorage:', error);
+    }
   }, [favorites]);
 
   const toggleFavorite = (product) => {
