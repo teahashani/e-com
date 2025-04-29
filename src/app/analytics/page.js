@@ -159,28 +159,27 @@ export default function AnalyticsPage() {
       {
         label: 'Direct',
         data: [1200, 1900, 1500, 2100, 1800, 2400],
-        backgroundColor: 'rgba(59, 130, 246, 0.8)', // Blue-500
+        backgroundColor: 'rgba(59, 130, 246, 0.8)', 
         borderColor: 'rgb(59, 130, 246)',
         borderWidth: 1,
       },
       {
         label: 'Referral',
         data: [800, 1200, 1000, 1400, 1100, 1600],
-        backgroundColor: 'rgba(96, 165, 250, 0.8)', // Blue-400
+        backgroundColor: 'rgba(96, 165, 250, 0.8)',
         borderColor: 'rgb(96, 165, 250)',
         borderWidth: 1,
       },
       {
         label: 'Organic Search',
         data: [1500, 2200, 1800, 2500, 2100, 2800],
-        backgroundColor: 'rgba(147, 197, 253, 0.8)', // Blue-300
         borderColor: 'rgb(147, 197, 253)',
         borderWidth: 1,
       },
       {
         label: 'Social',
         data: [600, 900, 700, 1000, 800, 1200],
-        backgroundColor: 'rgba(191, 219, 254, 0.8)', // Blue-200
+        backgroundColor: 'rgba(191, 219, 254, 0.8)', 
         borderColor: 'rgb(191, 219, 254)',
         borderWidth: 1,
       },
@@ -223,9 +222,9 @@ export default function AnalyticsPage() {
       {
         data: [45, 25, 30],
         backgroundColor: [
-          'rgba(59, 130, 246, 0.8)',  // Blue-500
-          'rgba(96, 165, 250, 0.8)',  // Blue-400
-          'rgba(147, 197, 253, 0.8)', // Blue-300
+          'rgba(59, 130, 246, 0.8)',  
+          'rgba(96, 165, 250, 0.8)', 
+          'rgba(147, 197, 253, 0.8)', 
         ],
         borderColor: [
           'rgb(59, 130, 246)',
@@ -260,11 +259,11 @@ export default function AnalyticsPage() {
       {
         data: [15, 35, 25, 15, 10],
         backgroundColor: [
-          'rgba(59, 130, 246, 0.8)',  // Blue-500
-          'rgba(96, 165, 250, 0.8)',  // Blue-400
-          'rgba(147, 197, 253, 0.8)', // Blue-300
-          'rgba(191, 219, 254, 0.8)', // Blue-200
-          'rgba(219, 234, 254, 0.8)', // Blue-100
+          'rgba(59, 130, 246, 0.8)',
+          'rgba(96, 165, 250, 0.8)',  
+          'rgba(147, 197, 253, 0.8)', 
+          'rgba(191, 219, 254, 0.8)', 
+          'rgba(219, 234, 254, 0.8)', 
         ],
         borderColor: [
           'rgb(59, 130, 246)',
@@ -293,43 +292,6 @@ export default function AnalyticsPage() {
     },
     cutout: '70%',
   };
-
-  // Sample data for recent orders
-  const recentOrders = [
-    {
-      id: 1,
-      customer: 'John Doe',
-      product: 'Premium Headphones',
-      amount: '$299.99',
-      status: 'Completed',
-      date: '2024-02-20',
-    },
-    {
-      id: 2,
-      customer: 'Jane Smith',
-      product: 'Wireless Mouse',
-      amount: '$49.99',
-      status: 'Processing',
-      date: '2024-02-19',
-    },
-    {
-      id: 3,
-      customer: 'Mike Johnson',
-      product: 'Mechanical Keyboard',
-      amount: '$129.99',
-      status: 'Completed',
-      date: '2024-02-18',
-    },
-    {
-      id: 4,
-      customer: 'Sarah Wilson',
-      product: 'Gaming Monitor',
-      amount: '$399.99',
-      status: 'Pending',
-      date: '2024-02-17',
-    },
-  ];
-
   const timeRanges = [
     { label: '24 Hours', value: '24hours' },
     { label: '7 Days', value: '7days' },

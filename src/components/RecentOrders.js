@@ -11,13 +11,13 @@ const RecentOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products');
+        const response = await fetch('https://dummyjson.com/products');
         if (!response.ok) {
           throw new Error('Failed to fetch orders');
         }
         const data = await response.json();
         // Transform the product data into order format
-        const transformedOrders = data.slice(0, 5).map((product, index) => ({
+        const transformedOrders = data.products.slice(0, 5).map((product, index) => ({
           id: `#${1000 + index}`,
           product: product.title,
           customer: 'Customer ' + (index + 1),

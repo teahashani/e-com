@@ -13,12 +13,12 @@ export default function ProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products');
+        const response = await fetch('https://dummyjson.com/products');
         if (!response.ok) {
           throw new Error('Failed to fetch products');
         }
         const data = await response.json();
-        setProducts(data);
+        setProducts(data.products);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -53,7 +53,7 @@ export default function ProductsPage() {
           <div key={product.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
             <div className="relative h-48">
               <img
-                src={product.image}
+                src={product.thumbnail}
                 alt={product.title}
                 className="w-full h-full object-contain p-4"
               />
