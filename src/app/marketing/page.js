@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FiStar, FiInstagram, FiDollarSign, FiTrendingUp, FiTrendingDown, FiEye, FiActivity, FiUsers, FiRefreshCw, FiArrowUp, FiArrowDown, FiClock, FiFileText } from 'react-icons/fi';
+import { FiStar, FiInstagram, FiDollarSign, FiTrendingUp, FiTrendingDown, FiEye, FiActivity, FiUsers, FiRefreshCw, FiArrowUp, FiArrowDown, FiClock, FiFileText, FiBarChart2, FiGlobe, FiSearch, FiFilter } from 'react-icons/fi';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -177,6 +177,88 @@ const MarketingPage = () => {
 
   const timeRanges = ['Today', 'Week', 'Month'];
 
+  const featuredCampaigns = [
+    {
+      id: 1,
+      creator: 'Sarah Johnson',
+      campaign: 'Self Branding',
+      platform: 'Facebook',
+      platformIcon: 'https://cdn-icons-png.flaticon.com/512/124/124010.png',
+      status: 'Active',
+      progress: 75,
+      startDate: '2024-01-01',
+      endDate: '2024-03-31',
+      budget: '$15,000'
+    },
+    {
+      id: 2,
+      creator: 'Mike Chen',
+      campaign: 'Product Launch',
+      platform: 'Instagram',
+      platformIcon: 'https://cdn-icons-png.flaticon.com/512/174/174855.png',
+      status: 'Planning',
+      progress: 30,
+      startDate: '2024-02-15',
+      endDate: '2024-04-15',
+      budget: '$25,000'
+    },
+    {
+      id: 3,
+      creator: 'Emma Davis',
+      campaign: 'Holiday Special',
+      platform: 'Twitter',
+      platformIcon: 'https://cdn-icons-png.flaticon.com/512/733/733579.png',
+      status: 'Completed',
+      progress: 100,
+      startDate: '2023-12-01',
+      endDate: '2023-12-31',
+      budget: '$10,000'
+    },
+    {
+      id: 4,
+      creator: 'Alex Thompson',
+      campaign: 'Summer Collection',
+      platform: 'LinkedIn',
+      platformIcon: 'https://cdn-icons-png.flaticon.com/512/174/174857.png',
+      status: 'Active',
+      progress: 45,
+      startDate: '2024-01-15',
+      endDate: '2024-05-15',
+      budget: '$20,000'
+    }
+  ];
+
+  const trafficSources = [
+    {
+      source: 'Google',
+      percentage: 45,
+      visits: '125,000',
+      trend: '+12.5%',
+      icon: 'https://cdn-icons-png.flaticon.com/512/2991/2991148.png'
+    },
+    {
+      source: 'YouTube',
+      percentage: 30,
+      visits: '83,000',
+      trend: '+8.2%',
+      icon: 'https://cdn-icons-png.flaticon.com/512/1384/1384060.png'
+    },
+    {
+      source: 'Facebook',
+      percentage: 15,
+      visits: '42,000',
+      trend: '+5.1%',
+      icon: 'https://cdn-icons-png.flaticon.com/512/124/124010.png'
+    },
+    {
+      source: 'Instagram',
+      percentage: 10,
+      visits: '28,000',
+      trend: '+3.8%',
+      icon: 'https://cdn-icons-png.flaticon.com/512/174/174855.png'
+    }
+  ];
+
   return (
     <div className="p-6">
       <div className="max-w-7xl mx-auto">
@@ -291,6 +373,106 @@ const MarketingPage = () => {
                   <FiRefreshCw className="w-4 h-4" />
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Featured Campaigns and Traffic Sources Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+          {/* Featured Campaigns */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div className="p-4 border-b border-gray-100 dark:border-gray-700">
+              <div className="flex items-center justify-between">
+                <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Featured Campaigns</h2>
+                <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900">
+                  <FiBarChart2 className="w-5 h-5 text-blue-500 dark:text-blue-300" />
+                </div>
+              </div>
+            </div>
+            {/* Column Headers */}
+            <div className="grid grid-cols-3 px-4 py-3 bg-gray-50 dark:bg-gray-700/50 border-b border-gray-100 dark:border-gray-700">
+              <div className="text-sm font-medium text-gray-500 dark:text-gray-400">Creator</div>
+              <div className="text-sm font-medium text-gray-500 dark:text-gray-400 text-center">Campaign</div>
+              <div className="text-sm font-medium text-gray-500 dark:text-gray-400 text-right">Status</div>
+            </div>
+            <div className="divide-y divide-gray-100 dark:divide-gray-700">
+              {featuredCampaigns.map((campaign) => (
+                <div key={campaign.id} className="p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                  <div className="grid grid-cols-3 items-center">
+                    {/* Creator Name */}
+                    <div className="flex items-center space-x-2">
+                      <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                        <span className="text-xs font-medium text-gray-600 dark:text-gray-300">
+                          {campaign.creator.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
+                      <span className="text-sm text-gray-600 dark:text-gray-300">{campaign.creator}</span>
+                    </div>
+
+                    {/* Campaign Info */}
+                    <div className="flex items-center justify-center space-x-2">
+                      <img 
+                        src={campaign.platformIcon} 
+                        alt={campaign.platform} 
+                        className="w-5 h-5 rounded"
+                      />
+                      <span className="text-sm text-gray-800 dark:text-white">{campaign.campaign}</span>
+                    </div>
+
+                    {/* Status */}
+                    <div className="flex justify-end">
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                        campaign.status === 'Active' 
+                          ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300'
+                          : campaign.status === 'Planning'
+                          ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300'
+                          : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
+                      }`}>
+                        {campaign.status}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Top Traffic Sources */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div className="p-4 border-b border-gray-100 dark:border-gray-700">
+              <div className="flex items-center justify-between">
+                <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Top Traffic Sources</h2>
+                <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900">
+                  <FiGlobe className="w-5 h-5 text-purple-500 dark:text-purple-300" />
+                </div>
+              </div>
+            </div>
+            <div className="p-4 space-y-4">
+              {trafficSources.map((source, index) => (
+                <div key={index}>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center space-x-2">
+                      <img 
+                        src={source.icon} 
+                        alt={source.source} 
+                        className="w-5 h-5 rounded"
+                      />
+                      <span className="text-sm font-medium text-gray-800 dark:text-white">{source.source}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">({source.visits} visits)</span>
+                    </div>
+                    <span className="text-xs font-medium text-green-500">{source.trend}</span>
+                  </div>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+                    <div 
+                      className="bg-purple-500 h-1.5 rounded-full" 
+                      style={{ width: `${source.percentage}%` }}
+                    ></div>
+                  </div>
+                  <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    <span>{source.percentage}% of total traffic</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
